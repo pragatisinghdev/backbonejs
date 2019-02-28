@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My API</title>
+</head>
+<body>
+	<div id="container">Hello There....</div>
+	<section id="todoapp">
+		<header id="header">
+			<h1>TO DO</h1>
+			<input id="new-todo" placeholder="What needs to be done?" />
+		</header>
+		<section id="main">
+			<ul id="todo-list"></ul>
+		</section>
+	</section>
+
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/underscore1_9_1.js"></script>
+	<script type="text/javascript" src="js/backbone1_4_0.js"></script>
+	<script type="text/javascript" src="js/local_storage.js"></script>
+
+
+	<script type="text/javascript">
+		//View
+		var AppView = Backbone.View.extend({
+			el:'#container',
+			template : _.template("<h2>Hello <%= which %> Template</h2>"),
+			initialize : function(){
+				console.log('I am in console');
+				console.log(this.el); //DOM element
+				console.log(this.$el); //jquery element
+				this.render();
+			},
+			render: function(){
+				//this.$el.html('This is from Render Function');
+				this.$el.html(this.template({which:'Pragati'}))
+			},
+		});
+		var appview = new AppView();
+		//var el = '#container';
+		//appview.render(el);
+
+		//MODEL namespace, we created a model and set its default values
+		var app = {};
+		app.Todo = Backbone.Model.extend({
+			defaults: {
+				title : '',
+				completed: false
+			}
+		});
+		
+		var todo = new app.Todo({title:'My Title', completed:false});//created an object and initialized variables
+		/* try this on console of browser
+		todo.get('title');
+		todo.get('completed');
+		todo.set('created on', Date());
+		todo.get('created on');*/
+
+		//Collection to save data
+		app.TodoList = Backbone.Collection.extend({
+			model: app.Todo,
+			localStorage: new Store("backbone-todo")
+		});
+		//instance of the collection
+		var todolist = new app.TodoList();
+		todolist.create({title:'My Book1', completed:false});
+		var lmodel = new app.Todo({title:'My Book2', completed:true});
+		todolist.add(lmodel);
+		todolist.add(new app.Todo({title:'My Book3', id:3}));
+		//todolist.pluck('title') //on console
+		//JSON.stringify(todolist)
+	</script>
+
+</body>
+</html>

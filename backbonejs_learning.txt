@@ -1,0 +1,46 @@
+================================================= ODOO SPECIFIC ===========================================================
+It addition to "frontend view" makes those changes in all the html files.
+Also, ordering is very important, so be sure to load your file after the original.
+This can be done using priority of View-Inheritance
+
+
+ODOO also uses requirejs for this purpose. https://requirejs.org/	
+	RequireJS is a JavaScript file and module loader. 
+
+>In your JavaScript file, you call odoo.define(), which receives
+the namespace you want to define as the first (addon's name) argument, and a function that contains the
+actual implementation as the second argument.
+
+The definition function receives only one parameter, require, which is a function you can use to obtain
+references to JavaScript namespaces defined in other modules or in the core.
+The object you return here is what other code gets when it calls require('yourmodule').
+
+
+
+
+
+
+
+
+
+
+
+
+========================================BACKBONE=====================================
+Web applications nowadays require heavy use of JavaScript to generate content on the fly. The user needn’t wait between requests and page refreshes. A lot of the logic/code that used to be on the server side is being moved to the client side.
+JS allows web sites to render only content that changes without needing to reload the full-page on every request.
+
+>_.js templates have the following syntax,
+
+_.template(templateString, [data], [settings])
+where in the templateString you use the place holder <%= %> and <%- %> to dynamically insert data. The later allows for HTML escape while the first one doesn’t. Moreover, you can use <% %> to run any javascript code
+
+BACKBONE.MODEL
+t contains the interactive data and the logic surrounding it, such as data validation, getters and setters, default values, data initialization, conversions and so on.
+
+Another important aspect of models it’s that their properties are dynamic; they can be created on the fly and doesn’t have any specific type associated.
+
+Collections allows to save data (in database, file, memory), and it requires a reference to it. Therefore, you need to specify the url parameter with a relative url, where the model’s resource would be located on the server
+
+Basic Properties
+There are 4 basic properties in a view: el, initialize, render, and events.
