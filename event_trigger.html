@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My API</title>
+</head>
+<body>
+
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/underscore1_9_1.js"></script>
+	<script type="text/javascript" src="js/backbone1_4_0.js"></script>
+	<script type="text/javascript" src="js/local_storage.js"></script>
+
+	<script>
+		var object = {},
+		callback = function(msg){console.log(msg, +"is triggered");};
+		_.extend(object, Backbone.Events);
+		object.on("my_event", callback);
+		object.trigger("my_event", "my custom event");
+	</script>
+</body>
+</html>
