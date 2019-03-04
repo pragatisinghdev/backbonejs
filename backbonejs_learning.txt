@@ -44,3 +44,5 @@ Collections allows to save data (in database, file, memory), and it requires a r
 
 Basic Properties
 There are 4 basic properties in a view: el, initialize, render, and events.
+
+$el is cached JQuery object: If you cache your jQuery elements, it means that you store an element as a variable so that you can re-use that element without your jQuery having to re-query the DOM in search of it every time you want to apply some code to that element.
